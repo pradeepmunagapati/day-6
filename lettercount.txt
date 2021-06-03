@@ -1,0 +1,44 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace day_6
+{
+    
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+           Console.Write("Enter the string : ");
+            string Input = Console.ReadLine();
+            Dictionary<char, int> keyValuePairs = new Dictionary<char, int>();
+
+
+
+            foreach (var item in Input)
+            {
+                int counter;
+                keyValuePairs.TryGetValue(item, out counter);
+                if (counter == 0)
+                {
+                    keyValuePairs.Add(item, 1);
+                }
+                else
+                {
+                    keyValuePairs.Remove(item);
+                    keyValuePairs.Add(item, counter + 1);
+                }
+            }
+            foreach (var item in keyValuePairs)
+            {
+                Console.WriteLine(item.Key + " - " + item.Value);
+            }
+            Console.ReadLine();
+        }
+    }
+}

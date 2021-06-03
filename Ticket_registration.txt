@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace day_6
+{
+    class employee
+    {
+        public int eid;
+        public string ename;
+        public DateTime traveldate;
+        public string tlocation;
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            employee e1 = new employee();
+        id:
+            try
+            {
+                Console.WriteLine("enter employee id which is 6 digits");
+                e1.eid = Convert.ToInt32(Console.ReadLine());
+                if (e1.eid.ToString().Length != 6)
+                {
+                    Console.WriteLine("please enter 6 digits only");
+                    goto id;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("please enter 6 digits only");
+                goto id;
+            }
+        name: Console.WriteLine("enter employee name");
+            e1.ename = Console.ReadLine();
+            foreach (char c in e1.ename)
+            {
+                if (!Char.IsLetter(c))
+                {
+                    Console.WriteLine("please enter only alphabets");
+                    goto name;
+                }
+            }
+        date:
+            try
+            {
+                Console.Write("enter date");
+                e1.traveldate = Convert.ToDateTime(Console.ReadLine());
+                DateTime tdate = DateTime.Now.Date;
+                if (e1.traveldate != tdate)
+                {
+                    throw new Exception();
+
+                }
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("enterd date is incorrect");
+                goto date;
+            }
+        location:
+            try
+            {
+                Console.WriteLine("enter travel location");
+                e1.tlocation = Console.ReadLine();
+                if (e1.tlocation == "mumbai" || e1.tlocation == "pune" || e1.tlocation == "Mumbai" || e1.tlocation == "Pune" || e1.tlocation == "MUMBAI" || e1.tlocation == "PUNE")
+                {
+
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("enter either mumbai or pune");
+                goto location;
+            }
+            Console.ReadLine();
+        }
+
+
+    }
+}
